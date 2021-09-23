@@ -7,16 +7,150 @@
 
 namespace Spryker\Glue\GlueBackendApiApplication;
 
-use Spryker\Glue\Kernel\Backend\Container;
+use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\Kernel\Backend\Factory\AbstractFactory;
 
 class GlueBackendApiApplicationFactory extends AbstractFactory
 {
+
     /**
-     * @return Container
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
      */
-    public function getDependencyContainer(): Container
+    public function getApplicationPlugins(): array
     {
-        return $this->getContainer();
+        return [];
+    }
+
+    /**
+     * Rest resource route plugin stack
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface[]
+     */
+    public function getResourceRoutePlugins(): array
+    {
+        return $this->getProvidedDependency(GlueBackendApiApplicationDependencyProvider::PLUGIN_RESOURCE_ROUTES);
+    }
+
+    /**
+     * Rest resource relation provider plugin collection, plugins must construct full resource by resource ids.
+     *
+     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface $resourceRelationshipCollection
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface
+     */
+    public function getResourceRelationshipPlugins(
+        ResourceRelationshipCollectionInterface $resourceRelationshipCollection
+    ): ResourceRelationshipCollectionInterface {
+        return $resourceRelationshipCollection;
+    }
+
+    /**
+     * Validate http request plugins
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ValidateHttpRequestPluginInterface[]
+     */
+    public function getValidateHttpRequestPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * Plugins that called before processing {@link \Spryker\Glue\Kernel\Controller\FormattedAbstractController}.
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\FormattedControllerBeforeActionPluginInterface[]
+     */
+    public function getFormattedControllerBeforeActionTerminatePlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * Format/Parse http request to internal rest resource request
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\FormatRequestPluginInterface[]
+     */
+    public function getFormatRequestPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * Format response data the data which will send with http response
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\FormatResponseDataPluginInterface[]
+     */
+    public function getFormatResponseDataPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * Format/add additional response headers
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\FormatResponseHeadersPluginInterface[]
+     */
+    public function getFormatResponseHeadersPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ValidateRestRequestPluginInterface[]
+     */
+    public function getValidateRestRequestPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestRequestValidatorPluginInterface[]
+     */
+    public function getRestRequestValidatorPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestUserValidatorPluginInterface[]
+     */
+    public function getRestUserValidatorPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * Called before invoking controller action
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ControllerBeforeActionPluginInterface[]
+     */
+    public function getControllerBeforeActionPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * Called after done processing controller action
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ControllerAfterActionPluginInterface[]
+     */
+    public function getControllerAfterActionPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestUserFinderPluginInterface[]
+     */
+    public function getRestUserFinderPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RouterParameterExpanderPluginInterface[]
+     */
+    public function getRouterParameterExpanderPlugins(): array
+    {
+        return [];
     }
 }

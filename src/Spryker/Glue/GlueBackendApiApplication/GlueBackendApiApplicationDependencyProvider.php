@@ -14,7 +14,13 @@ use Spryker\Glue\Kernel\Container;
 class GlueBackendApiApplicationDependencyProvider extends AbstractBundleDependencyProvider
 {
     /**
+     * @var string
+     */
+    public const PLUGIN_RESOURCE_ROUTES = 'PLUGIN_RESOURCE_ROUTES';
+
+    /**
      * @param Container $container
+     *
      * @return Container
      */
     public function provideDependencies(Container $container)
@@ -32,7 +38,7 @@ class GlueBackendApiApplicationDependencyProvider extends AbstractBundleDependen
      */
     protected function addResourceRoutePlugins(Container $container): Container
     {
-        $container->set(GlueApplicationDependencyProvider::PLUGIN_RESOURCE_ROUTES, function (Container $container) {
+        $container->set(static::PLUGIN_RESOURCE_ROUTES, function (Container $container) {
             return $this->getResourceRoutePlugins();
         });
 
