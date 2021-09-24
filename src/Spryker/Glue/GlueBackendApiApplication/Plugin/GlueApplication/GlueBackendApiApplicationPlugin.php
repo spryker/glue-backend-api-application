@@ -9,7 +9,7 @@ namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication;
 
 use Spryker\Glue\GlueJsonApi\Plugin\AbstractGlueJsonApiApplicationPlugin;
 use Spryker\Glue\GlueApplication\ApiApplication\ApiApplicationContext;
-use Spryker\Glue\GlueApplication\Plugin\ApiApplication\HostApplicationApiContextExpander;
+use Spryker\Glue\GlueJsonApi\Plugin\HostApplicationApiContextExpander;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ApiApplicationPluginInterface;
 use Spryker\Glue\GlueJsonApi\Plugin\RouteRequestMatcherPlugin;
 
