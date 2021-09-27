@@ -7,28 +7,24 @@
 
 namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication;
 
-use Spryker\Glue\GlueJsonApi\Plugin\AbstractGlueJsonApiApplicationPlugin;
-use Spryker\Glue\GlueApplication\ApiApplication\ApiApplicationContext;
-use Spryker\Glue\GlueJsonApi\Plugin\HostApplicationApiContextExpander;
+use Generated\Shared\Transfer\ApiContextTransfer;
+use Spryker\Glue\JsonApiConvention\Plugin\AbstractGlueJsonRequestApiApplicationPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ApiApplicationPluginInterface;
-use Spryker\Glue\GlueJsonApi\Plugin\RouteRequestMatcherPlugin;
+use Spryker\Glue\JsonApiConvention\Plugin\RouteRequestMatcherPlugin;
 
 /**
  * @method \Spryker\Glue\GlueBackendApiApplication\GlueBackendApiApplicationFactory getFactory()
  */
-class GlueBackendApiApplicationPlugin extends AbstractGlueJsonApiApplicationPlugin implements ApiApplicationPluginInterface
+class GlueBackendApiApplicationPlugin extends AbstractGlueJsonRequestApiApplicationPlugin implements ApiApplicationPluginInterface
 {
     /**
-     * @param \Spryker\Glue\GlueApplication\ApiApplication\ApiApplicationContext $apiApplicationContext
+     * @param ApiContextTransfer $apiApplicationContext
      *
      * @return bool
      */
-    public function isServing(ApiApplicationContext $apiApplicationContext): bool
+    public function isServing(ApiContextTransfer $apiApplicationContext): bool
     {
-        return (
-            $apiApplicationContext->has(HostApplicationApiContextExpander::HOST)
-            && preg_match('/glue\.us/', $apiApplicationContext->get('host')) > 0
-        );
+        return preg_match('/glue\.us/', (string)$apiApplicationContext->getHost()) > 0;
     }
 
     /**
@@ -39,10 +35,11 @@ class GlueBackendApiApplicationPlugin extends AbstractGlueJsonApiApplicationPlug
         return $this->getFactory()->getApplicationPlugins();
     }
 
+    /**
+     * @return RouteRequestMatcherPlugin
+     */
     protected function getRouteRequestMatcherPlugin(): RouteRequestMatcherPlugin
     {
         return $this->getFactory()->getRouteRequestMatcherPlugin();
     }
-
-
 }

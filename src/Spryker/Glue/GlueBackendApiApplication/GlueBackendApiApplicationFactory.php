@@ -7,7 +7,7 @@
 
 namespace Spryker\Glue\GlueBackendApiApplication;
 
-use Spryker\Glue\GlueJsonApi\Plugin\RouteRequestMatcherPlugin;
+use Spryker\Glue\JsonApiConvention\Plugin\RouteRequestMatcherPlugin;
 use Spryker\Glue\Kernel\Backend\Factory\AbstractFactory;
 
 class GlueBackendApiApplicationFactory extends AbstractFactory
