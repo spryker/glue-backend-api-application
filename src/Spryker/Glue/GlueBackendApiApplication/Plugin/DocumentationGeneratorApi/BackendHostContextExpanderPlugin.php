@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication;
+namespace Spryker\Glue\GlueBackendApiApplication\Plugin\DocumentationGeneratorApi;
 
 use Generated\Shared\Transfer\ApiApplicationSchemaContextTransfer;
 use Spryker\Glue\DocumentationGeneratorApiExtension\Dependency\Plugin\ContextExpanderPluginInterface;

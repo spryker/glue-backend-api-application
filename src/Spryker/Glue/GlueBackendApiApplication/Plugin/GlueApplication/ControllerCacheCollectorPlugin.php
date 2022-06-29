@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication\Cache;
+namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication;
 
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ControllerCacheCollectorPluginInterface;
 use Spryker\Glue\Kernel\AbstractPlugin;

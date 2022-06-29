@@ -5,10 +5,10 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication;
+namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication;
 
 use Generated\Shared\Transfer\GlueRequestTransfer;
-use Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RequestBuilderPluginInterface;
+use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RequestBuilderPluginInterface;
 use Spryker\Glue\Kernel\Backend\AbstractPlugin;
 
 /**

@@ -5,25 +5,24 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueBackendApiApplication;
+namespace Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication;
 
 use Generated\Shared\Transfer\GlueRequestTransfer;
 use Generated\Shared\Transfer\GlueRequestValidationTransfer;
+use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RequestAfterRoutingValidatorPluginInterface;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceInterface;
-use Spryker\Glue\GlueBackendApiApplicationExtension\Dependency\Plugin\RequestAfterRoutingValidatorPluginInterface;
 use Spryker\Glue\Kernel\Backend\AbstractPlugin;
 
 /**
  * @method \Spryker\Glue\GlueBackendApiApplication\GlueBackendApiApplicationFactory getFactory()
  */
-class ScopeRequestAfterRoutingValidatorPlugin extends AbstractPlugin implements RequestAfterRoutingValidatorPluginInterface
+class RequestCorsValidatorPlugin extends AbstractPlugin implements RequestAfterRoutingValidatorPluginInterface
 {
     /**
      * {@inheritDoc}
-     * - Performs validation of resource's scopes against the scopes in the token.
-     * - Validates that the resource implements interface `ScopeDefinitionPluginInterface`:
-     * - if it doesn't - does nothing,
-     * - if does - checks that one of scopes which parsed from the token is present in `resource::getScopes()`.
+     * - Validates that the `access-control-request-method` header is present and allowed for the resource.
+     * - Validates that the `access-control-request-headers` header is present and is allowed in the `\Spryker\Glue\GlueRestApiConvention\GlueRestApiConventionConfig::getCorsAllowedHeaders()`.
+     * - Does nothing if the method used by the request is not OPTIONS.
      *
      * @api
      *
@@ -32,9 +31,9 @@ class ScopeRequestAfterRoutingValidatorPlugin extends AbstractPlugin implements 
      *
      * @return \Generated\Shared\Transfer\GlueRequestValidationTransfer
      */
-    public function validateRequest(GlueRequestTransfer $glueRequestTransfer, ResourceInterface $resource): GlueRequestValidationTransfer
+    public function validate(GlueRequestTransfer $glueRequestTransfer, ResourceInterface $resource): GlueRequestValidationTransfer
     {
-        return $this->getFactory()->createScopeRequestAfterRoutingValidator()->validate(
+        return $this->getFactory()->createRequestCorsValidator()->validate(
             $glueRequestTransfer,
             $resource,
         );
