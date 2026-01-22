@@ -207,6 +207,65 @@ class GlueBackendApiApplicationConfig extends AbstractBundleConfig
     }
 
     /**
+     * Specification:
+     * - Returns CORS headers for cross-origin requests.
+     * - Returns empty array if CORS origin is not configured.
+     *
+     * @api
+     *
+     * @return array<string, string>
+     */
+    public function getCorsHeaders(): array
+    {
+        $corsOrigin = $this->getCorsAllowOrigin();
+
+        if ($corsOrigin === '') {
+            return [];
+        }
+
+        return [
+            'Access-Control-Allow-Origin' => $corsOrigin,
+            'Access-Control-Allow-Methods' => $this->getCorsAllowMethods(),
+            'Access-Control-Allow-Headers' => implode(', ', $this->getCorsAllowedHeaders()),
+            'Access-Control-Allow-Credentials' => $this->getCorsAllowCredentials(),
+            'Access-Control-Max-Age' => $this->getCorsMaxAge(),
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCorsAllowMethods(): string
+    {
+        return $this->get(
+            GlueBackendApiApplicationConstants::GLUE_BACKEND_CORS_ALLOW_METHODS,
+            'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+        );
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCorsAllowCredentials(): string
+    {
+        return $this->get(
+            GlueBackendApiApplicationConstants::GLUE_BACKEND_CORS_ALLOW_CREDENTIALS,
+            'true',
+        );
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCorsMaxAge(): string
+    {
+        return $this->get(
+            GlueBackendApiApplicationConstants::GLUE_BACKEND_CORS_MAX_AGE,
+            '86400',
+        );
+    }
+
+    /**
      * @return string|null
      */
     protected function getCachePathIfCacheEnabled(): ?string

@@ -8,6 +8,7 @@
         "spryker/application": "^3.28.0",
         "spryker/container": "^1.4.5",
         "spryker/documentation-generator-api-extension": "^1.0.0",
+        "spryker/event-dispatcher-extension": "^1.0.0",
         "spryker/glue-application": "^1.39.0",
         "spryker/glue-application-extension": "^1.14.0",
         "spryker/kernel": "^3.66.0",
@@ -19,8 +20,12 @@
     },
     "require-dev": {
         "spryker/code-sniffer": "*",
+        "spryker/event-dispatcher": "*",
         "spryker/glue-json-api-convention-extension": "*",
         "spryker/testify": "*"
+    },
+    "suggest": {
+        "spryker/event-dispatcher": "To use EventDispatcher plugins."
     },
     "autoload": {
         "psr-4": {

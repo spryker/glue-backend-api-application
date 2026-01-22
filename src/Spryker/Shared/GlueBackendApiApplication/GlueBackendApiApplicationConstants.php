@@ -70,4 +70,37 @@ interface GlueBackendApiApplicationConstants
      * @var string
      */
     public const GLUE_BACKEND_CORS_ALLOW_ORIGIN = 'GLUE_BACKEND_API_APPLICATION:GLUE_BACKEND_CORS_ALLOW_ORIGIN';
+
+    /**
+     * Specification:
+     *  - Specifies allowed HTTP methods for CORS requests.
+     *  - Defaults to 'GET, POST, PUT, PATCH, DELETE, OPTIONS'.
+     *
+     * @api
+     *
+     * @var string
+     */
+    public const GLUE_BACKEND_CORS_ALLOW_METHODS = 'GLUE_BACKEND_API_APPLICATION:GLUE_BACKEND_CORS_ALLOW_METHODS';
+
+    /**
+     * Specification:
+     *  - Specifies whether credentials are allowed in CORS requests.
+     *  - Defaults to 'true'.
+     *
+     * @api
+     *
+     * @var string
+     */
+    public const GLUE_BACKEND_CORS_ALLOW_CREDENTIALS = 'GLUE_BACKEND_API_APPLICATION:GLUE_BACKEND_CORS_ALLOW_CREDENTIALS';
+
+    /**
+     * Specification:
+     *  - Specifies how long the results of a preflight request can be cached.
+     *  - Defaults to '86400' (24 hours).
+     *
+     * @api
+     *
+     * @var string
+     */
+    public const GLUE_BACKEND_CORS_MAX_AGE = 'GLUE_BACKEND_API_APPLICATION:GLUE_BACKEND_CORS_MAX_AGE';
 }

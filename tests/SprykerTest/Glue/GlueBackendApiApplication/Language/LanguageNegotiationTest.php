@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Glue\GlueBackendApiApplication\LanguageNegotiation;
+namespace SprykerTest\Glue\GlueBackendApiApplication\Language;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\AcceptLanguageTransfer;
@@ -22,7 +22,7 @@ use SprykerTest\Glue\GlueBackendApiApplication\GlueBackendApiApplicationTester;
  * @group SprykerTest
  * @group Glue
  * @group GlueBackendApiApplication
- * @group LanguageNegotiation
+ * @group Language
  * @group LanguageNegotiationTest
  * Add your own group annotations below this line
  */
